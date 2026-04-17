@@ -125,24 +125,6 @@ p{font-size:15px;color:#c7cee0}
 }
 .scroll-hint::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#7a8ba8,transparent)}
 
-/* ============= countdown ============= */
-.cd-wrap{
-  margin:32px 0 0;
-  padding:18px;
-  border:1px solid rgba(122,224,255,.25);
-  border-radius:4px;
-  background:rgba(122,224,255,.04);
-  backdrop-filter:blur(8px);
-}
-.cd-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dashed rgba(122,224,255,.15)}
-.cd-row:last-child{border-bottom:none}
-.cd-name{font-size:13px;color:#c7cee0}
-.cd-status{font-family:"JetBrains Mono",monospace;font-size:12px;color:#7ae0ff;white-space:nowrap}
-.cd-status.live{color:#ff6b7a}
-.cd-status.live::before{content:"● ";animation:blink 1.2s infinite}
-.cd-status.done{color:#7a8ba8;text-decoration:line-through}
-@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:.3}}
-
 /* ============= nav ============= */
 .nav{
   position:sticky;top:0;z-index:50;
@@ -306,67 +288,142 @@ p{font-size:15px;color:#c7cee0}
 .cast-desc{font-size:13px;color:#c7cee0;margin-top:10px;line-height:1.8}
 
 /* ============= study ============= */
-.study-grid{display:flex;flex-direction:column;gap:16px;margin-top:20px}
+.study-intro{
+  font-size:14px;
+  color:#c7cee0;
+  padding:16px 18px;
+  background:rgba(122,224,255,.04);
+  border-left:2px solid #7ae0ff;
+  border-radius:0 4px 4px 0;
+  line-height:1.9;
+  margin-bottom:28px;
+}
+.study-cat{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;
+  letter-spacing:.3em;
+  color:#ff6b7a;
+  margin:36px 0 14px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,107,122,.2);
+}
+.study-cat:first-of-type{margin-top:0}
 .study-card{
   padding:20px;
   border-radius:4px;
   background:linear-gradient(135deg,rgba(122,224,255,.05),rgba(255,107,122,.03));
   border:1px solid rgba(122,224,255,.12);
+  margin-bottom:14px;
 }
 .study-card h4{
   font-family:"Noto Serif JP",serif;
   font-weight:700;
-  font-size:15px;
+  font-size:16px;
   margin-bottom:10px;
   color:#e8ecf5;
+  line-height:1.5;
 }
-.study-card p{font-size:13px;line-height:1.8}
-.past-works{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.study-card p{font-size:13px;line-height:1.9}
+.study-card b{color:#e8ecf5;font-weight:700}
+
+.past-works{
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:12px;
+  background:rgba(5,9,26,.5);
+  border-radius:3px;
+}
 .past-work{
-  font-family:"JetBrains Mono",monospace;
   font-size:12px;
   color:#c7cee0;
-  padding:4px 0;
-  display:flex;
-  gap:10px;
-}
-.past-work .yr{color:#7ae0ff;min-width:40px}
-
-/* ============= schedule ============= */
-.venue-list{display:flex;flex-direction:column;gap:16px;margin-top:20px}
-.venue{
-  padding:22px 20px;
-  border-left:3px solid #7ae0ff;
-  background:rgba(122,224,255,.04);
-  border-radius:0 4px 4px 0;
-}
-.venue.done{border-left-color:#7a8ba8;opacity:.55}
-.venue.live{border-left-color:#ff6b7a;background:rgba(255,107,122,.06)}
-.venue-city{
-  font-family:"Noto Serif JP",serif;
-  font-weight:900;
-  font-size:24px;
-  letter-spacing:.06em;
-}
-.venue-city small{font-family:"JetBrains Mono",monospace;font-size:10px;color:#7ae0ff;font-weight:400;margin-left:10px;letter-spacing:.2em}
-.venue.done .venue-city small{color:#7a8ba8}
-.venue.live .venue-city small{color:#ff6b7a}
-.venue-info{margin-top:10px;font-size:13px;color:#c7cee0;line-height:1.9}
-.venue-info strong{color:#e8ecf5;font-weight:700}
-
-/* ============= tickets ============= */
-.ticket-list li{
-  list-style:none;
-  padding:14px 0;
-  border-bottom:1px dashed rgba(122,224,255,.15);
-  display:flex;
-  justify-content:space-between;
+  padding:6px 0;
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:8px;
   align-items:baseline;
-  gap:12px;
-  font-size:13px;
+  border-bottom:1px dashed rgba(122,224,255,.08);
 }
-.ticket-list li:last-child{border-bottom:none}
-.ticket-date{font-family:"JetBrains Mono",monospace;color:#7ae0ff;font-size:12px;white-space:nowrap}
+.past-work:last-child{border-bottom:none}
+.past-work .yr{
+  color:#7ae0ff;
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;
+}
+.past-work b{color:#e8ecf5;font-weight:700;font-size:13px}
+.past-work em{
+  display:block;
+  grid-column:2;
+  font-style:normal;
+  color:#7a8ba8;
+  font-size:11px;
+  margin-top:2px;
+  line-height:1.6;
+}
+
+.glossary{margin-top:10px}
+.glossary dt{
+  font-family:"Noto Serif JP",serif;
+  font-weight:700;
+  font-size:14px;
+  color:#7ae0ff;
+  margin-top:14px;
+  padding-bottom:4px;
+  border-bottom:1px dashed rgba(122,224,255,.2);
+}
+.glossary dt:first-child{margin-top:0}
+.glossary dd{
+  font-size:13px;
+  color:#c7cee0;
+  margin-top:6px;
+  line-height:1.85;
+  padding-left:2px;
+}
+
+.mini-list{margin-top:10px}
+.mini-list dt{
+  font-family:"Noto Serif JP",serif;
+  font-weight:700;
+  font-size:14px;
+  color:#e8ecf5;
+  margin-top:14px;
+}
+.mini-list dt:first-child{margin-top:0}
+.mini-list dt .yr-inline{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;
+  color:#7ae0ff;
+  margin-left:6px;
+  letter-spacing:.15em;
+  font-weight:400;
+}
+.mini-list dd{
+  font-size:13px;
+  color:#c7cee0;
+  margin-top:4px;
+  line-height:1.8;
+}
+
+.bullet-list{
+  margin-top:10px;
+  padding-left:18px;
+  font-size:13px;
+  color:#c7cee0;
+  line-height:1.9;
+}
+.bullet-list li{padding:4px 0}
+.bullet-list li::marker{color:#7ae0ff}
+.bullet-list.drill li{padding:6px 0}
+.bullet-list b{color:#7ae0ff;font-weight:700}
+
+.study-outro{
+  margin-top:28px;
+  padding:16px 18px;
+  text-align:center;
+  border-top:1px dashed rgba(122,224,255,.2);
+}
+.study-outro p{font-size:13px;color:#7a8ba8;line-height:1.9}
 
 /* ============= checklist ============= */
 .check-list{display:flex;flex-direction:column;gap:2px;margin-top:16px}
@@ -467,7 +524,6 @@ footer a{color:#7ae0ff;border-bottom:1px solid rgba(122,224,255,.3)}
       華氏<br>マイナス三二〇°
     </h1>
     <div class="hero-sub">KASHI MINUS 320°  /  UNOFFICIAL GUIDE</div>
-    <div class="cd-wrap" id="cd"></div>
   </div>
   <div class="hero-bottom">
     <div class="scroll-hint">SCROLL TO DIVE</div>
@@ -483,8 +539,6 @@ footer a{color:#7ae0ff;border-bottom:1px solid rgba(122,224,255,.3)}
     <a href="#director"># 野田秀樹</a>
     <a href="#cast"># 出演者</a>
     <a href="#study"># 予習</a>
-    <a href="#schedule"># 日程</a>
-    <a href="#ticket"># チケット</a>
     <a href="#checklist"># 持ち物</a>
     <a href="#memo"># 感想メモ</a>
   </div>
@@ -701,122 +755,128 @@ footer a{color:#7ae0ff;border-bottom:1px solid rgba(122,224,255,.3)}
 <section id="study">
   <span class="section-label">06  PRE-STUDY</span>
   <h2>観る前に<br>触れておきたい</h2>
+  <p class="study-intro">野田演劇は予備知識ゼロでも楽しめる。ただし、いくつかの補助線を引いておくと<span class="em">言葉の折り重ね</span>や<span class="em">景色の転調</span>が段違いに立体的に届きます。観劇までに少しずつ触れておきたい九つのトピック。</p>
 
-  <div class="study-grid">
+  <div class="study-cat">A. 野田演劇に親しむ</div>
 
-    <div class="study-card">
-      <h4>① 過去の NODA・MAP 代表作</h4>
-      <p>どれか一本でも配信・戯曲で触れておくと、共通言語が増えます。近作ほど直結する可能性が高い。</p>
-      <div class="past-works">
-        <div class="past-work"><span class="yr">1997</span>キル</div>
-        <div class="past-work"><span class="yr">2004</span>赤鬼</div>
-        <div class="past-work"><span class="yr">2006</span>ロープ</div>
-        <div class="past-work"><span class="yr">2012</span>エッグ</div>
-        <div class="past-work"><span class="yr">2018</span>贋作・桜の森の満開の下</div>
-        <div class="past-work"><span class="yr">2019</span>Q : A Night At The Kabuki</div>
-        <div class="past-work"><span class="yr">2021</span>フェイクスピア</div>
-        <div class="past-work"><span class="yr">2023</span>兎、波を走る</div>
-      </div>
+  <div class="study-card">
+    <h4>① NODA・MAP を一本でも観ておく</h4>
+    <p>過去作のどれか1本でも映像で触れておくと、<span class="em">言葉と身体の速度</span>に耳と目が慣れます。NHK（Eテレ / プレミアム）や WOWOW で再放送されることがあり、DVD/Blu-ray 化されている作品も複数。</p>
+    <div class="past-works">
+      <div class="past-work"><span class="yr">1989</span><b>贋作・桜の森の満開の下</b><em>野田戯曲の原点のひとつ。鬼と人の境界。</em></div>
+      <div class="past-work"><span class="yr">1997</span><b>キル</b><em>NODA・MAP 出発点。チンギス・ハーンを素材に。</em></div>
+      <div class="past-work"><span class="yr">2003</span><b>オイル</b><em>古事記と戦後日本を重ねる。</em></div>
+      <div class="past-work"><span class="yr">2004</span><b>赤鬼</b><em>他者・国境・排除をめぐる寓話。</em></div>
+      <div class="past-work"><span class="yr">2006</span><b>ロープ</b><em>プロレスを演劇化した異色作。</em></div>
+      <div class="past-work"><span class="yr">2012</span><b>エッグ</b><em>スポーツの熱狂と戦争。</em></div>
+      <div class="past-work"><span class="yr">2016</span><b>足跡姫</b><em>十八代目中村勘三郎への追悼。</em></div>
+      <div class="past-work"><span class="yr">2019</span><b>Q : A Night At The Kabuki</b><em>クイーン音楽 × 源平『ロミジュリ』。</em></div>
+      <div class="past-work"><span class="yr">2021</span><b>フェイクスピア</b><em>「嘘」連作①。御巣鷹の尾根へ。</em></div>
+      <div class="past-work"><span class="yr">2023</span><b>兎、波を走る</b><em>「嘘」連作②。『アリス』と拉致。</em></div>
     </div>
-
-    <div class="study-card">
-      <h4>② 低温科学というモチーフ</h4>
-      <p>液体窒素（−196℃）と液体ヘリウム（−269℃）の違い、超伝導、クライオニクス（人体冷凍保存）など。<span class="em">「凍らせれば時間は止まるのか」</span>という問いは、SF／哲学／倫理の交差点。</p>
-    </div>
-
-    <div class="study-card">
-      <h4>③ フェイク／ポスト真実</h4>
-      <p>『フェイクスピア』に通底するテーマ。<span class="em">「本物らしく見える嘘」が世界を動かす</span>現代の空気感を、科学・報道・歴史の文脈で点検しておくと、戯曲の皮肉がよく届く。</p>
-    </div>
-
-    <div class="study-card">
-      <h4>④ レイ・ブラッドベリ『華氏451度』</h4>
-      <p>本が禁じられ、本を焼く温度=華氏451°F から題名を取った古典SF。<span class="em">「華氏」を冠した物語は検閲と記憶の話</span>になる——という補助線として脳裏に置いておくと面白い。</p>
-    </div>
-
-    <div class="study-card">
-      <h4>⑤ 野田秀樹『半神』『赤鬼』などの戯曲集</h4>
-      <p>新潮社・白水社から戯曲が複数出版。<span class="em">ページで読むとダジャレの密度が可視化</span>され、劇場での情報処理が段違いに楽になる。</p>
-    </div>
-
   </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- ========== SCHEDULE ========== -->
-<section id="schedule">
-  <span class="section-label">07  SCHEDULE</span>
-  <h2>公演日程・会場</h2>
-  <div class="venue-list">
-
-    <div class="venue" data-start="2026-04-10" data-end="2026-05-31">
-      <div class="venue-city">東京<small>TOKYO</small></div>
-      <div class="venue-info">
-        <strong>2026年4月10日(金) 〜 5月31日(日)</strong><br>
-        東京芸術劇場 プレイハウス<br>
-        <small style="color:#7a8ba8">池袋駅西口 徒歩約2分</small>
-      </div>
-    </div>
-
-    <div class="venue" data-start="2026-06-06" data-end="2026-06-14">
-      <div class="venue-city">北九州<small>KITAKYUSHU</small></div>
-      <div class="venue-info">
-        <strong>2026年6月6日(土) 〜 6月14日(日)</strong><br>
-        J：COM 北九州芸術劇場 大ホール<br>
-        <small style="color:#7a8ba8">小倉駅北口 徒歩約3分</small>
-      </div>
-    </div>
-
-    <div class="venue" data-start="2026-07-02" data-end="2026-07-11">
-      <div class="venue-city">ロンドン<small>LONDON</small></div>
-      <div class="venue-info">
-        <strong>2026年7月2日(木) 〜 7月11日(土)</strong><br>
-        Sadler's Wells Theatre<br>
-        <small style="color:#7a8ba8">海外公演 / 英国サドラーズ・ウェルズ劇場</small>
-      </div>
-    </div>
-
-    <div class="venue" data-start="2026-07-22" data-end="2026-08-02">
-      <div class="venue-city">大阪<small>OSAKA</small></div>
-      <div class="venue-info">
-        <strong>2026年7月22日(水) 〜 8月2日(日)</strong><br>
-        新歌舞伎座<br>
-        <small style="color:#7a8ba8">上本町駅 直結</small>
-      </div>
-    </div>
-
+  <div class="study-card">
+    <h4>② 戯曲として読む</h4>
+    <p>野田戯曲を活字で読むと、<span class="em">ダジャレ・掛詞の密度</span>が可視化されます。新潮社・白水社から戯曲集が複数刊行。『半神』『パンドラの鐘』『赤鬼』『キル』など代表作は入手しやすい。</p>
+    <p style="margin-top:10px">劇場で1回聞き逃した台詞のレイヤーが、ページで見返すと<span class="em">3枚重なっていた</span>——ということが普通に起こります。戯曲を読んでから映像を観る → 舞台を観る、という三段階予習が最も効きます。</p>
   </div>
-</section>
 
-<div class="divider"></div>
+  <div class="study-card">
+    <h4>③ 野田演劇の「型」用語集</h4>
+    <p style="font-size:13px;color:#7a8ba8;margin-bottom:10px">これらの型を<span class="em">知っているかどうか</span>で体感が大きく変わります。</p>
+    <dl class="glossary">
+      <dt>言葉のダブルミーニング</dt>
+      <dd>ひとつの台詞が同音異義で二つの意味を同時に走らせる。気づいた瞬間、景色が折り重なる。</dd>
+      <dt>全身の跳躍</dt>
+      <dd>俳優が走りながら台詞を叫び、転がり、跳ぶ。感情を語るより先に<span class="em">身体が先行する</span>。</dd>
+      <dt>群衆が風景になる</dt>
+      <dd>何人もが連なって森・海・時計・怪物になる。舞台美術の代わりに<span class="em">人間そのものが装置</span>に。</dd>
+      <dt>時空の折り重ね</dt>
+      <dd>一幕のうちに数百年の時間や複数の場所を重ねる。観客は「どこ・いつ」を手放して物語に乗る。</dd>
+      <dt>喜劇から悲劇への転調</dt>
+      <dd>2時間のうち終盤10分で景色が一変する。序盤の冗談が伏線として刺さる作り。</dd>
+      <dt>狂言回しの野田</dt>
+      <dd>本人出演回は、野田が<span class="em">語り手／観客と舞台を繋ぐ蝶番</span>を担うことが多い。</dd>
+    </dl>
+  </div>
 
-<!-- ========== TICKET ========== -->
-<section id="ticket">
-  <span class="section-label">08  TICKET</span>
-  <h2>チケット</h2>
-  <ul class="ticket-list">
-    <li>
-      <span>東京・北九州 一般発売</span>
-      <span class="ticket-date">2026.03.08 10:00〜</span>
-    </li>
-    <li>
-      <span>大阪 一般発売</span>
-      <span class="ticket-date">2026.06.14 10:00〜</span>
-    </li>
-    <li>
-      <span>ロンドン公演</span>
-      <span class="ticket-date">Sadler's Wells 公式</span>
-    </li>
-  </ul>
-  <p style="margin-top:18px;font-size:13px">最新情報は <a class="ext-link em" href="https://www.nodamap.com/kashi/" target="_blank" rel="noopener">NODA・MAP 公式サイト</a> を確認してください。</p>
+  <div class="study-cat">B. 題材の周辺知識</div>
+
+  <div class="study-card">
+    <h4>④ 液体窒素と低温科学</h4>
+    <p>華氏 −320°F（≒ 摂氏 −196°C）は<span class="em">液体窒素の沸点</span>。空気中の窒素を冷却して得られる無色透明の液体で、研究・医療・食品保存で広く使われています。</p>
+    <p style="margin-top:10px">低温になると物質は別の振る舞いを見せる。<span class="em">超伝導</span>（電気抵抗ゼロ）、<span class="em">超流動</span>（摩擦ゼロの流体）など、常識が揺らぐ領域。死後の人体を液体窒素温度で保管し未来の医療での蘇生を期待する思想——<span class="em">クライオニクス</span>——も、この温度帯をめぐる人類の夢。</p>
+    <p style="margin-top:10px"><span class="em">「凍らせれば時間は止まるのか」</span>という問いは、SF・哲学・倫理の交差点にある。</p>
+  </div>
+
+  <div class="study-card">
+    <h4>⑤ レイ・ブラッドベリ『華氏451度』</h4>
+    <p>1953年刊行のディストピア SF。<span class="em">本が禁じられ、本を焼く温度 = 華氏451°F</span> から題名を取った古典。〈焚書官〉が書物を灰にしていく世界で、記憶を守ろうとする人々の物語。</p>
+    <p style="margin-top:10px">野田作品が「華氏」を題名に冠すること自体、<span class="em">検閲・記憶・情報統制の寓話として読みうる</span>ことを示唆している、とも読めます。</p>
+    <p style="margin-top:10px"><span class="em">451°F は紙の発火点、−320°F は液体窒素の沸点</span>。燃やす温度と凍らせる温度の対。熱と冷、炎と氷を軸に、<span class="em">記憶と時間</span>を問い直す仕掛けなのかもしれない。</p>
+  </div>
+
+  <div class="study-card">
+    <h4>⑥ フェイク／ポスト真実の時代</h4>
+    <p>冒頭台詞の「サイエンス・フェイクション」は <span class="em">Science + Fake + Fiction</span> の造語。もっともらしい偽情報が科学・報道・歴史の顔をして世界を動かす——現代の空気そのもの。</p>
+    <p style="margin-top:10px">具体的な補助線：</p>
+    <ul class="bullet-list">
+      <li>科学論文の<b>再現性の危機</b>（有名な結果が追試で再現できない問題）</li>
+      <li>生成AIによる<b>合成映像・音声</b>の氾濫、ディープフェイク</li>
+      <li>歴史修正主義と<b>公文書の書き換え</b></li>
+      <li>陰謀論コミュニティの拡大と、エコーチェンバー</li>
+      <li>STAP細胞事件のような<b>科学者自身による捏造</b></li>
+    </ul>
+    <p style="margin-top:10px">野田は<span class="em">言葉の意味が滑る瞬間</span>を最も得意とする劇作家。フェイクの時代を描くとき、この作家の筆致は最も切れ味を増します。</p>
+  </div>
+
+  <div class="study-card">
+    <h4>⑦ 野田秀樹「嘘と記憶」連作</h4>
+    <p>近年の NODA・MAP には、<span class="em">「嘘」と「記憶の改竄」</span>を共通軸にした作品群があります。</p>
+    <dl class="mini-list">
+      <dt>Q : A Night At The Kabuki <span class="yr-inline">2019</span></dt>
+      <dd>クイーンの楽曲に乗せた源平版『ロミオとジュリエット』。若さ、死、失われた時間。</dd>
+      <dt>フェイクスピア <span class="yr-inline">2021</span></dt>
+      <dd>言葉の偽物と、真実の言葉。御巣鷹山の尾根へと向かう。</dd>
+      <dt>兎、波を走る <span class="yr-inline">2023</span></dt>
+      <dd>『不思議の国のアリス』を下敷きに、拉致と不条理を寓話化。</dd>
+    </dl>
+    <p style="margin-top:10px">『華氏マイナス320°』はこの系譜の<span class="em">次の一手</span>として観ることができます。題材が<span class="em">「科学」のフェイク</span>に移った——と仮説を立てて臨むと、発見が多いはず。</p>
+  </div>
+
+  <div class="study-cat">C. 耳と目の準備運動</div>
+
+  <div class="study-card">
+    <h4>⑧ ダジャレを「聴く」耳を起こす</h4>
+    <p>野田作品の台詞は、以下のような<span class="em">言葉の折り重ね</span>が毎分のように起こります。</p>
+    <ul class="bullet-list drill">
+      <li><b>同音異義</b>：「かし／貸し／歌詞／菓子／華氏」が同じ音に集約される。</li>
+      <li><b>慣用句の裏返し</b>：「石の上にも三年」→「石の下に三年」のように逆転させ、諺を舞台装置に変える。</li>
+      <li><b>外来語と和語の交差</b>：「サイエンス」と「斎宮」を同じ音で踊らせる。</li>
+      <li><b>固有名詞の変奏</b>：人名が作品世界の比喩になり、意味が裏返る。</li>
+      <li><b>漢字の字面遊び</b>：「華氏」の字を見つめ直すと、華やかさと氏族の気配が同居している。</li>
+    </ul>
+    <p style="margin-top:10px">事前に<span class="em">過去作の冒頭10分</span>を観るだけでも、この処理の速度に耳が慣れます。</p>
+  </div>
+
+  <div class="study-card">
+    <h4>⑨ 「身体が森になる」目を起こす</h4>
+    <p>NODA・MAP では、何人もの俳優が絡み合って一本の桜の木になったり、<span class="em">無数の兵士の群れ</span>が一瞬で<span class="em">嵐の海</span>になったりします。舞台装置を読むのではなく、<span class="em">身体の集積を景色として観る</span>回路を、あらかじめ開いておきたい。</p>
+    <p style="margin-top:10px"><b>実用ヒント</b>：最初の10分は<span class="em">台詞の意味を追わず</span>、舞台全体を俯瞰して見るのがおすすめ。目が景色に慣れてから、意味へと入っていく。</p>
+    <p style="margin-top:10px">また、野田作品は<span class="em">休憩なしで2時間前後</span>が通例。水分・トイレの準備は万全に。</p>
+  </div>
+
+  <div class="study-outro">
+    <p>——以上の九つ全部に手を出す必要はありません。<span class="em">気になったひとつ</span>を掘るだけで、観劇の解像度は確実に上がります。</p>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ========== CHECKLIST ========== -->
 <section id="checklist">
-  <span class="section-label">09  CHECKLIST</span>
+  <span class="section-label">07  CHECKLIST</span>
   <h2>当日の持ち物</h2>
   <p style="font-size:13px;color:#7a8ba8">タップでチェック。状態はこの端末に保存されます。</p>
   <div class="check-list" id="checklist-items">
@@ -836,7 +896,7 @@ footer a{color:#7ae0ff;border-bottom:1px solid rgba(122,224,255,.3)}
 
 <!-- ========== MEMO ========== -->
 <section id="memo">
-  <span class="section-label">10  MEMO</span>
+  <span class="section-label">08  MEMO</span>
   <h2>観劇メモ</h2>
   <p style="font-size:13px;color:#7a8ba8">気になった台詞・印象に残った場面・考えたことを自由に。この端末にだけ保存されます（他人には見えません）。</p>
   <div class="memo-wrap">
@@ -858,43 +918,6 @@ footer a{color:#7ae0ff;border-bottom:1px solid rgba(122,224,255,.3)}
 </div>
 
 <script>
-/* ===== countdown ===== */
-(function(){
-  const venues = [
-    {city:"東京",     start:"2026-04-10", end:"2026-05-31"},
-    {city:"北九州",   start:"2026-06-06", end:"2026-06-14"},
-    {city:"ロンドン", start:"2026-07-02", end:"2026-07-11"},
-    {city:"大阪",     start:"2026-07-22", end:"2026-08-02"},
-  ];
-  function dayDiff(target){
-    const now=new Date();
-    const t=new Date(target+"T19:00:00+09:00");
-    return Math.ceil((t-now)/(1000*60*60*24));
-  }
-  function renderCD(){
-    const wrap=document.getElementById("cd");
-    if(!wrap) return;
-    wrap.innerHTML = venues.map(v=>{
-      const toStart=dayDiff(v.start);
-      const toEnd=dayDiff(v.end);
-      let cls="cd-status",txt;
-      if(toEnd<0){cls+=" done";txt="終演";}
-      else if(toStart<=0){cls+=" live";txt="公演中  千秋楽まで "+Math.max(toEnd,0)+" 日";}
-      else{txt="初日まで "+toStart+" 日";}
-      return `<div class="cd-row"><span class="cd-name">${v.city}</span><span class="${cls}">${txt}</span></div>`;
-    }).join("");
-  }
-  renderCD();
-
-  /* venue status badges in schedule */
-  document.querySelectorAll(".venue").forEach(el=>{
-    const s=dayDiff(el.dataset.start);
-    const e=dayDiff(el.dataset.end);
-    if(e<0) el.classList.add("done");
-    else if(s<=0) el.classList.add("live");
-  });
-})();
-
 /* ===== cast toggle ===== */
 document.querySelectorAll("[data-toggle]").forEach(card=>{
   card.addEventListener("click",()=>card.classList.toggle("open"));
